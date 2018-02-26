@@ -7,15 +7,18 @@ public class Fibonacci extends Progression {
 	public Fibonacci() { 
 		this(1); 
 		prev = 0; 
+		firstIs=false;
 	}
 	private Fibonacci(double first) {
 		super(first);
 	}
 
 	@Override
-	public double nextValue() {
-        // add the necessary code here
-
+	public double nextValue() throws IllegalStateException  {
+       if (!firstIs){ 
+			throw new  IllegalStateException(" IllegalStateException:firstValue() have not been executed previously. ");
+		}
+		
 	current = prev+current;
 	prev = current-prev;
   

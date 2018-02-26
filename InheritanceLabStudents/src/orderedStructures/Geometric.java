@@ -7,11 +7,15 @@ public class Geometric extends Progression {
 	public Geometric(double firstValue, double commonFactor) { 
 		super(firstValue); 
 		this.commonFactor = commonFactor; 
+		firstIs=false;
 	}
 	
 	@Override
-	public double nextValue() {
-		current = current * commonFactor; 
+	public double nextValue() throws IllegalStateException  {
+		if (!firstIs){ 
+			throw new  IllegalStateException(" IllegalStateException:firstValue() have not been executed previously. ");
+		}
+			current = current +  commonFactor; 
 		return current;
 	}
 	@Override
